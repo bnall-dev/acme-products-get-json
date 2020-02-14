@@ -1,0 +1,71 @@
+body {
+  text-align: center;
+  background-color: lightgrey;
+}
+
+#app {
+  display: flex;
+}
+
+#products {
+  text-align: center;
+  flex-flow: column;
+
+  width: 50%;
+  align-items: center;
+}
+
+#productList {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80vh;
+  align-items: flex-start;
+
+  overflow: scroll;
+}
+#productList::-webkit-scrollbar {
+  display: none;
+}
+
+.product {
+  width: 24%;
+  margin: 8px;
+  text-align: center;
+  background-color: rgb(207, 135, 0);
+  border-radius: 20px;
+  padding: 16px;
+  color: white;
+  height: 200px;
+}
+
+#companies {
+  text-align: center;
+  align-items: center;
+  flex-flow: column;
+
+  width: 50%;
+}
+
+#companyList {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80vh;
+  align-items: flex-start;
+
+  overflow: scroll;
+}
+
+#companyList::-webkit-scrollbar {
+  display: none;
+}
+
+.company {
+  width: 24%;
+  margin: 8px;
+  text-align: center;
+  background-color: rgb(83, 83, 196);
+  border-radius: 20px;
+  padding: 16px;
+  color: white;
+  height: 200px;
+}

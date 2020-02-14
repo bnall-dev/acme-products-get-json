@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+  </head>
+  <body>
+    <h1>Acme Express w/ JSON</h1>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useEffect, useState } = React;
+
+      const App = () => {
+        const [products, setProducts] = useState([]);
+        useEffect(() => {
+          axios.get('/api/products').then(response => {
+            setProducts(response.data);
+          });
+        }, []);
+
+        const [companies, setCompanies] = useState([]);
+        useEffect(() => {
+          axios.get('/api/companies').then(response => {
+            setCompanies(response.data);
+          });
+        }, []);
+
+        return (
+          <div id="app">
+            <div id="products">
+              <h2>Products</h2>
+              <div id="productList">
+                {products.map(product => (
+                  <div key={product.id} className="product">
+                    <h3>{product.name}</h3>
+                    <h4>{product.description}</h4>
+                    <h4>${product.suggestedPrice}.00</h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div id="companies">
+              <h2>Companies</h2>
+              <div id="companyList">
+                {companies.map(company => (
+                  <div key={company.id} className="company">
+                    <h3>{company.name}</h3>
+                    <h4>{company.catchPhrase}</h4>
+                    <h4>{company.phone}</h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      ReactDOM.render(<App />, document.querySelector('#root'));
+    </script>
+  </body>
+</html>
